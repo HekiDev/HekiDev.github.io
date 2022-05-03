@@ -1,0 +1,865 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<script src="https://kit.fontawesome.com/c8e0914be2.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+
+body {
+	background-color: #24252a;
+	font-family: 'Poppins', sans-serif;
+}
+.my-navbar{
+	background-color: transparent;
+	position: fixed;
+	top:0;
+	z-index: 99999;
+	width: 100%;
+	padding: 10px 0px;
+	transition: all 0.3s ease;
+	border-bottom: 1px solid #ffffff;
+}
+.my-navbar.scrolled{
+	background-color: #ffffff;
+	padding: 0px;
+	box-shadow: 0 3px 1rem rgba(0,0,0,.1);
+}
+.my-navbar .navbar-brand{
+	font-weight: 800;
+	margin-right: 0px;
+	font-size: 16px;
+	color: #ffffff;
+}
+.my-navbar a.navbar-brand:hover{
+	background-color: transparent;
+	color: #ffffff;
+}
+.my-navbar.scrolled a.navbar-brand:hover{
+	color: #333;
+}
+.my-navbar a{
+	float: left;
+	display: block;
+	text-decoration: none;
+	color: #ffffff;
+	padding: 14px 16px;
+	transition: all 0.3s ease 0s;
+	font-size: 14px;
+}
+.my-navbar.scrolled a{
+	color: #333;
+}
+.my-navbar a:hover{
+	color: rgba(0,136,169,0.8);
+}
+.my-navbar .navbar-logo{
+	height: 20px;
+	margin-bottom: -5px;
+}
+.my-navbar .navbar-open{
+	float: left;
+	display: block;
+	text-decoration: none;
+	color: #ffffff;
+	padding: 14px 16px;
+	font-size: 15px;
+	outline: none;
+	background-color: transparent;
+	border: none;
+	display: none;
+}
+.my-navbar .scrolled .navbar-open{
+	color: #333;
+}
+.my-navbar .navbar-open:hover{
+	background-color: #f1f1f1;
+	color: black;
+	transition:0.4s;
+}
+.my-navbar .navbar-menu-right{
+	display: block;
+	float: right;
+}
+.my-navbar .navbar-brand:hover{
+	background-color: white;
+	
+}
+#navbar-menu #navbar-close{
+	display: none;
+}
+#navbar-menu a.navbar-brand{
+	display: none;
+}
+#dropdown {
+	float: left;
+
+}
+#dropdown-content{
+	display: none;
+	position: absolute;
+	top: 50px;
+	border-radius: 5px;
+	background-color: #ffffff;
+	min-width: 160px;
+	box-shadow: 1px 2px 5px rgba(0,0,0,0.2);
+	z-index: 1;
+  
+}
+#dropdown-content.active{
+	display: block;
+  
+}
+#dropdown-content a {
+	float: none;
+	color: black;
+	padding: 10px 16px;
+	text-decoration: none;
+	display: block;
+	text-align: left;
+}
+#dropdown-content a:hover {
+	background-color: #ddd;
+}
+.topBtn{
+	padding: 10px 16px 5px 5px;
+	box-sizing: border-box;
+	display: inline-block;
+}
+.topBtn #button{
+	color: green;
+	background-color: #43BD41;
+	padding: 5px 16px !important;
+	border-radius: 50px;
+	font-size:13px;
+	color: #ffffff;
+	box-sizing: border-box;
+	text-decoration: none;
+}
+.topBtn #button:hover{
+	color: #ffffff;
+	background-color: #3A9F39;
+	box-shadow: 0 3px 1rem rgba(0,0,0,.1);
+}
+@media screen and (max-width: 700px) {
+	.my-navbar a{
+		display: none;
+	}
+	.my-navbar a.navbar-search{
+		float: right;
+		display: block;
+	}
+	.my-navbar .navbar-open{
+		float: left;
+		display: block;
+	}
+	.my-navbar.scrolled .navbar-open{
+		color: #333;
+	}
+	.my-navbar a.navbar-brand{
+		text-align: left;
+		float: left;
+		margin-left: 0px;
+		display: block;
+	}
+	#navbar-menu{
+		height: 100%;
+		width: 250px;
+		position: fixed;
+		z-index: 99999;
+		top: 0;
+		left: -250px;
+		background-color: #ffffff;
+		overflow-x: hidden;
+		transition: 0.2s ease;
+	}
+	#navbar-menu.active{
+		left:0px;
+		box-shadow:0 0 0 10000px rgba(0,0,0,.30);
+	}
+	#navbar-menu .navbar-menu-right{
+		float: left;
+		width: 100%;
+    }
+	#navbar-menu a{
+		float: none;
+		display: block;
+		text-decoration: none;
+		color: #3E3E3E;
+		padding: 10px 16px;
+		font-size: 15px;
+	}
+	#navbar-menu #navbar-close{
+		float: right;
+		display: block;
+		position: absolute;
+		top: 0;
+		right: 0;
+	}
+	#navbar-menu a.navbar-brand{
+		display: block;
+		margin-left: 0px;
+    }
+	#dropdown-content.active{
+		min-width: 250px;
+		position: relative;
+		display: block;
+		top: 0px;
+		box-shadow: none;
+		background-color: #f0f0f0;
+	}
+	#dropdown {
+		float: none;
+	}
+	#dropdown-content.active a{
+		padding: 10px 30px;
+	}
+	.topBtn{
+		padding: 10px 16px;
+		display: inline-block;
+	}
+}
+#overlay {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	z-index: 99999;
+	background: white;
+	display: none;
+	opacity: 0; 
+}
+#overlay.active {
+	display: block;
+}
+.intro-div{
+   
+  padding: 200px 0px 100px 0px;
+ 
+}
+.intro{
+	height: 400px;
+	width: 400px;
+	padding-top: 50px;
+	box-sizing: border-box;
+	
+}
+.myName{
+	color: #ffffff;
+	font-size: 50px;
+	
+}
+.myDesc{
+	color: #ffffff;
+	margin-top: -5px;
+	font-size: 20px;
+}
+.myMotto{
+	margin-top: -5px;
+	font-size: 14px;
+	color: white;
+}
+.aboutdiv{
+	background-color: rgba(0,136,169,0.8);
+	color: #ffffff;
+	padding: 40px 0px 40px 0px;
+}
+.responsive{
+	width: 200px;
+	border-radius: 50%;
+}
+.myPic{
+	text-align: center;
+}
+.responsive:hover{
+	opacity:0.9;
+}
+.servicesDiv{
+	background-color: #ffffff;
+	color: #000000;
+	padding: 40px 0px 40px 0px;
+}.skilldiv{
+	padding: 40px 0px 40px 0px;
+	color: #ffffff;
+	border-bottom: 1px solid #ffffff;
+}
+.skillslogo{
+	width: 70px;
+	margin-bottom: 10px;
+}
+.logo-div{
+	border-radius: 10px;
+	padding: 20px;
+	transition: 0.3s;
+	color: #333;
+	background-color: #DFD7FF;
+}
+.logo-div:hover{
+	background-color: rgba(0,136,169,0.8);
+	box-shadow: 1px 2px 5px rgba(0,0,0,0.2);
+	color: #ffffff;
+	cursor: pointer;
+}
+.img-fluid{
+	height: 200px;
+	opacity: 0.8;
+}
+.img-fluid:hover{
+	cursor: pointer;
+	opacity: 1;
+	transition: 0.4s;
+}
+.projectDiv{
+	color: #ffffff;
+	padding: 40px 0px 40px 0px;
+
+}
+.project{
+	
+	height: 100px;
+}
+.projectContainer{
+	border: 1px solid;
+	width: 200px;
+	overflow: hidden;
+}
+.contactDiv{
+	color: #000000;
+	padding: 40px 0px 40px 0px;
+	background-color: #ffffff;
+}
+.footer{
+	color: #ffffff;
+	padding: 40px 0px 40px 0px;
+	background-color: #343434;
+}
+.card{
+	border: none;
+}
+.card:hover{
+	box-shadow: 2px -1px 108px -30px rgba(255,255,255,0.58);
+	
+}
+.custom-btn{
+	background-color: #43BD41;
+}
+.animate {
+	animation-duration: 0.3s;
+	-webkit-animation-duration: 0.3s;
+	animation-fill-mode: both;
+	-webkit-animation-fill-mode: both;
+}
+@keyframes slideIn {
+  0% {
+    transform: translateY(1rem);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0rem);
+    opacity: 1;
+  }
+
+  0% {
+    transform: translateY(1rem);
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes slideIn {
+  0% {
+    -webkit-transform: transform;
+    -webkit-opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: translateY(0);
+    -webkit-opacity: 1;
+  }
+
+  0% {
+    -webkit-transform: translateY(1rem);
+    -webkit-opacity: 0;
+  }
+}
+
+.slideIn {
+  -webkit-animation-name: slideIn;
+  animation-name: slideIn;
+}
+</style>
+</head>
+<body>
+<div id = "overlay"></div>
+<div class="my-navbar" id="navbar">
+	<button type = "button" class = "navbar-open" id="navbar-toggle">
+		<i class="fa fa-bars"></i>
+	</button>
+	<a href = "#" class = "navbar-brand">H E C T O R</a>
+	<div id = "navbar-menu">
+		<a href = "#" class = "navbar-brand"><p style = "font-size: 20px; font-weight: 800;">H E C T O R</p></a>
+		<a href = "#close" class = "navbar-close" id="navbar-close">
+			&#9932;
+		</a>
+		<a href="#" class = "">Home</a>
+		<a href="#aboutMe" class = "">About</a>
+		<div class="dropdown" id = "dropdown">
+			<a href="#options" id="dropbtn">Services&nbsp;&nbsp;&nbsp;
+			  <i class="fas fa-angle-down ml-4"></i>
+			</a>
+			<div id = "dropdown-content" class = "animate slideIn">
+			  <a href="#">Website Design</a>
+			  <a href="#">Web Application</a>
+			  <a href="#">Graphic Design</a>
+			</div>
+		</div>
+		<a href="#skills" class = "">Skills</a>
+		<a href="#projects" class = "">Projects</a>
+		<a href="#contactMe" class = "">Contact</a>
+		
+		<div class = "navbar-menu-right">
+			<a href="#" class = ""><i class="fab fa-facebook"></i></a>
+			<a href="#" class = ""><i class="fab fa-twitter"></i></a>
+			<div class = "topBtn">
+				<a href="#" id = "button">Support</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class = "" data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="0" class="scrollspy-example" tabindex="0">
+	<div class = "intro-div">
+		<div class = "container">
+			<p class = "myName">
+				Hi, I'm Hector.
+			</p>
+			<p class = "myDesc">
+				Web Developer/Designer and Graphic Designer
+			</p>
+			<hr style = "color: white; height: 3px;">
+			<p class = "myMotto">
+				The secret to succes is dedication and aspiration.
+			</p>
+			<button type = "button" class = "btn btn-success shadow-none custom-btn">About Me</button>
+		</div>
+	</div>
+	<div class = "aboutdiv">
+		<div class = "container">
+			<div class = "row">
+				<div class = "col-md-6 myPic mx-auto">
+					<img src = "images/profile.png" class= "responsive" data-aos="fade-right" alt = "Hector's Pic">
+				</div>
+				<div class = "col-md-6">
+					<h3 id = "aboutMe">About Me</h3>
+					Hello! I'm Hector Morada an aspiring Web Developer/Designer and as well as a Graphic Designer. I found my passion building and designing websites, web apps, and graphic designs during my college days because it makes myself challanged. Every day I spend time studying other technologies that can be use in the future.
+					When I'm not in front of my computer, you will find me playing Mobile Legends Bang Bang and petting all the good cats.
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class = "servicesDiv">
+		<center><h3 id = "services">Services</h3></center>
+		<br>
+		<div class = "container">
+			<div class = "row" style = "text-align: center;">
+				<div class = "col-md-6 mb-3">
+					<center><h5>Web Design and Development</h5></center>
+					<br>
+					<img src="images/web-design.png" data-aos="fade-right" class="img-fluid" alt="...">
+				</div>
+				<div class = "col-md-6">
+					<center><h5>Graphic Design</h5></center>
+					<br>
+					<img src="images/illustration.png" data-aos="fade-left"class="img-fluid" alt="...">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class = "skilldiv">
+		<center><h3 id = "skills">My Skill Sets</h3></center>
+		<br>
+		
+		<div class = "container">
+			<h5>Web Design/Development</h5>
+			<br>
+			<div class = "row mb-2" style = "text-align: center;">
+				<div class = "col-md-3 mb-2">
+					<div class = "logo-div" data-aos="zoom-in">
+						<img src = "images/php.png" class = "skillslogo">
+						<h5>PHP</h5>
+					</div>
+					
+				</div>
+				<div class = "col-md-3 mb-2">
+					<div class = "logo-div" data-aos="zoom-in">
+						<img src = "images/fire.png" class = "skillslogo">
+						<h5>Codeigniter</h5>
+					</div>
+					
+				</div>
+				<div class = "col-md-3 mb-2">
+					<div class = "logo-div" data-aos="zoom-in">
+						<img src = "images/bootstrap.png" class = "skillslogo">
+						<h5>Bootstrap</h5>
+					</div>
+					
+				</div>
+				<div class = "col-md-3 mb-2">
+					<div class = "logo-div" data-aos="zoom-in">
+						<img src = "images/sass.png" class = "skillslogo">
+						<h5>SASS</h5>
+					</div>
+					
+				</div>
+			</div>
+			<div class = "row mb-2" style = "text-align: center;">
+				<div class = "col-md-3 mb-2">
+					<div class = "logo-div" data-aos="zoom-in">
+						<img src = "images/css.png" class = "skillslogo">
+						<h5>CSS</h5>
+					</div>
+					
+				</div>
+				<div class = "col-md-3 mb-2">
+					<div class = "logo-div" data-aos="zoom-in">
+						<img src = "images/mysql.png" class = "skillslogo">
+						<h5>MySQL</h5>
+					</div>
+					
+				</div>
+				<div class = "col-md-3 mb-2">
+					<div class = "logo-div" data-aos="zoom-in">
+						<img src = "images/js.png" class = "skillslogo">
+						<h5>JavaScript</h5>
+					</div>
+					
+				</div>
+				<div class = "col-md-3 mb-2">
+					<div class = "logo-div" data-aos="zoom-in">
+						<img src = "images/html-5.png" class = "skillslogo">
+						<h5>HTML</h5>
+					</div>
+					
+				</div>
+			</div>
+			<div class = "row" style = "text-align: center;">
+				<div class = "col-md-3 mb-2">
+					<div class = "logo-div" data-aos="zoom-in">
+						<img src = "images/laravel.png" class = "skillslogo">
+						<h5>Laravel</h5>
+					</div>
+					
+				</div>
+			</div>
+			<br>
+			<h5>Graphic Design</h5>
+			<br>
+			<div class = "row mb-2" style = "text-align: center;">
+				<div class = "col-md-3 mb-2">
+					<div class = "logo-div" data-aos="zoom-in">
+						<img src = "images/photoshop.png" class = "skillslogo">
+						<h5>Adobe Photoshop</h5>
+					</div>
+					
+				</div>
+				<div class = "col-md-3 mb-2">
+					<div class = "logo-div" data-aos="zoom-in">
+						<img src = "images/illustrator.png" class = "skillslogo">
+						<h5>Adobe Illustrator</h5>
+					</div>
+					
+				</div>
+				<div class = "col-md-3 mb-2">
+					<div class = "logo-div" data-aos="zoom-in">
+						<img src = "images/premiere-pro.png" class = "skillslogo">
+						<h5>Adobe Premier</h5>
+					</div>
+					
+				</div>
+				<div class = "col-md-3 mb-2">
+					<div class = "logo-div" data-aos="zoom-in">
+						<img src = "images/indesign.png" class = "skillslogo">
+						<h5>Adobe InDesign</h5>
+					</div>
+					
+				</div>
+			</div>
+			<div class = "row" style = "text-align: center;">
+				<div class = "col-md-3 mb-2">
+					<div class = "logo-div" data-aos="zoom-in">
+						<img src = "images/xd.png" class = "skillslogo">
+						<h5>Adobe XD</h5>
+					</div>
+					
+				</div>
+				<div class = "col-md-3 mb-2">
+					<div class = "logo-div" data-aos="zoom-in">
+						<img src = "images/figma.png" class = "skillslogo">
+						<h5>Figma</h5>
+					</div>
+					
+				</div>
+			</div>
+			<br>
+			<center><p>I'll add more skills in the future. <i class="far fa-smile-wink"></i></p></center>
+		</div>
+		
+	</div>
+	<div class = "projectDiv">
+		<center><h3 id = "projects">My Projects</h3>
+			WEB APPLICATIONS/DESIGNS
+		</center>
+		<br>
+		<div class = "container">
+			<br>
+			<div class = "row mb-2">
+				<div class = "col-md-6">
+					<div class="card mb-3" data-aos="fade-right" style = "color: black;">
+						<center>
+					  <img src="images/4.png" class="card-img-top" alt="..." width="100">
+					</center>
+					  <div class="card-body">
+						<h5 class="card-title"><a href = "http://barangay-health-center-management.rf.gd/" target = "_blank" style = "text-decoration:none;">Barangay Patient Health Management System</a></h5>
+						<p>My Thesis Project during my college days.</p>
+						<p class="card-text" style = "text-align: left;">Technologies Used:
+							<ul style = "text-align: left;">
+								<li>PHP</li>
+								<li>MySQL</li>
+								<li>CSS</li>
+								<li>HTML</li>
+								<li>Bootstrap</li>
+								<li>JavaScript</li>
+								<li>jQuery</li>
+							</ul>
+						</p>
+						<p class="card-text"><small class="text-muted">Created: March 2021</small></p>
+					  </div>
+					</div>
+				</div>
+				<div class = "col-md-6">
+					<div class="card mb-3" data-aos="fade-left" style = "color: black;">
+						<center>
+							<img src="images/website.png" class="" alt="..." width="100">
+						  </center>
+					  <div class="card-body">
+						<h5 class="card-title"><a href = "http://escada-erovoutika.ml/" target = "_blank" style = "text-decoration:none;">ESCADA Machine Monitoring</a></h5>
+						<p>My Web Application Project during my Internship days.</p>
+						<p class="card-text" style = "text-align: left;">Technologies Used:
+							<ul style = "text-align: left;">
+								<li>PHP</li>
+								<li>MySQL</li>
+								<li>CSS</li>
+								<li>HTML</li>
+								<li>Bootstrap</li>
+								<li>JavaScript</li>
+							</ul>
+						</p>
+						<p class="card-text"><small class="text-muted">Created: July 2021</small></p>
+					  </div>
+					</div>
+				</div>
+			</div>
+			<div class = "row">
+				<div class = "col-md-6">
+					<div class="card mb-3" data-aos="fade-right" style = "color: black;">
+						<center>
+							<img src="images/website.png" class="" alt="..." width="100">
+						  </center>
+					  <div class="card-body">
+						<h5 class="card-title"><a href = "http://gps-platform.rf.gd/?i=1" target = "_blank" style = "text-decoration:none;">GPS Platform UI</a></h5>
+						<p>My Web Application Project during my Internship days.</p>
+						<p class="card-text" style = "text-align: left;">Technologies Used:
+							<ul style = "text-align: left;">
+								<li>PHP</li>
+								<li>MySQL</li>
+								<li>CSS</li>
+								<li>HTML</li>
+								<li>Bootstrap</li>
+							</ul>
+						</p>
+						<p class="card-text"><small class="text-muted">Created: June 2021</small></p>
+					  </div>
+					</div>
+				</div>
+				<div class = "col-md-6">
+					<div class="card mb-3" data-aos="fade-left" style = "color: black;">
+						<center>
+							<img src="images/2.png" class="card-img-top" alt="..." width="100">
+						  </center>
+					  <div class="card-body">
+					  <h5 class="card-title"><a href = "https://umbonal-reliabiliti.000webhostapp.com/hr_care/" target = "_blank" style = "text-decoration:none;">Human Resources Management System</a></h5>
+						<p>My Web Application Project during my Part-Time as Web Developer.</p>
+						<p class="card-text" style = "text-align: left;">Technologies Used:
+							<ul style = "text-align: left;">
+								<li>PHP Codeigniter Framework</li>
+								<li>MySQL</li>
+								<li>CSS</li>
+								<li>HTML</li>
+								<li>Bootstrap</li>
+								<li>JavaScript</li>
+								<li>jQuery</li>
+							</ul>
+						</p>
+						<p class="card-text"><small class="text-muted">Created: July 2021</small></p>
+					  </div>
+					</div>
+				</div>
+			</div>
+			<div class = "row">
+				<div class = "col-md-6">
+					<div class="card mb-3" data-aos="fade-right" style = "color: black;">
+					  <img src="images/3.png" class="card-img-top" alt="...">
+					  <div class="card-body">
+						<h5 class="card-title"><a href = "http://hectormorada-portfolio.unaux.com/" target = "_blank" style = "text-decoration:none;">My Portfolio Website</a></h5>
+						<p>My Portfolio Website.</p>
+						<p class="card-text" style = "text-align: left;">Technologies Used:
+							<ul style = "text-align: left;">
+								<li>HTML</li>
+								<li>JavaScript</li>
+								<li>CSS</li>
+								<li>Bootstrap</li>
+							</ul>
+						</p>
+						<p class="card-text"><small class="text-muted">Created: August 2021</small></p>
+					  </div>
+					</div>
+				</div>
+				<div class = "col-md-6">
+					<div class="card mb-3" data-aos="fade-right" style = "color: black;">
+					  <img src="images/1.PNG" class="card-img-top" alt="...">
+					  <div class="card-body">
+						<h5 class="card-title"><a href = "https://thread-posting.online/" target = "_blank" style = "text-decoration:none;">Thread Posting</a></h5>
+						<p>Forum site/Thread Posting</p>
+						<p class="card-text" style = "text-align: left;">Technologies Used:
+							<ul style = "text-align: left;">
+								<li>Laravel</li>
+								<li>JavaScript</li>
+								<li>CSS</li>
+								<li>Bootstrap</li>
+								<li>Ajax</li>
+								<li>SASS</li>
+								<li>Jquery</li>
+							</ul>
+						</p>
+						<p class="card-text"><small class="text-muted">Created: August 2021</small></p>
+					  </div>
+					</div>
+				</div>
+			</div>
+			<hr style = "height: 3px;">
+			<center><h3>My Projects</h3>
+			GRAPHIC DESIGNS<br>
+			<br>
+			<i class="far fa-sad-tear" style = "font-size: 100px;"></i><br><br>
+			No Designs at the moment..
+		</center>
+		</div>
+		
+	</div>
+	<div class = "contactDiv">
+		<div class = "container">
+			<center><h3 id = "contactMe">Contact Me</h3></center>
+			<br>
+			<form class="row g-3" data-aos="fade-up">
+			  <div class="col-md-6">
+				<div class="form-floating mb-3">
+				  <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+				  <label for="floatingInput">Email address</label>
+				</div>
+				<div class="form-floating">
+				  <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+				  <label for="floatingPassword">Subject</label>
+				</div>
+				<br>
+				<div class="form-floating">
+				  <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+				  <label for="floatingTextarea2">Comments</label>
+				</div>
+				<button type = "button" class = "btn btn-success shadow-none mt-2 custom-btn">Submit</button>
+			  </div>
+			  <div class="col-md-6">
+				<i class="fas fa-envelope"></i> hectormorada041799@gmail.com<br>
+				<br>
+				<i class="fas fa-phone-alt"></i> 09095082575<br>
+				<br>
+				<i class="fab fa-facebook"></i> hectormorada
+			  </div>
+			</form>
+		</div>
+	</div>
+	<div class = "footer">
+		<div class = "container">
+			<center><p style = "font-size: 20px; font-weight: 800;">H E C T O R</p></center>
+			<br>
+			<div class = "row" style = "text-align: center;">
+				<div class = "col-md-6">
+				Follow Me<br><br>
+				<i class="fab fa-twitter"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+				<i class="fab fa-facebook"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+				<i class="fab fa-instagram"></i>
+				</div>
+				<div class = "col-md-6">
+				Keep in touch<br><br>
+				<i class="fas fa-envelope"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+				<i class="fas fa-phone-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+				<i class="fab fa-facebook"></i>
+				</div>
+			</div>
+			<br>
+			<center>All rights reserved 2021</center>
+		</div>
+	</div>
+</div>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+<script>
+const overlay = document.getElementById('overlay');
+const toggle = document.getElementById('navbar-toggle');
+const sidebar = document.getElementById('navbar-menu');
+const close = document.getElementById('navbar-close');
+
+const dropbtn = document.getElementById('dropbtn');
+const dropdownContent = document.getElementById('dropdown-content');
+
+document.onclick = function(e){
+	if(e.target.id == 'navbar-close' || e.target.id == 'overlay' || e.target.id == 'navbar'){
+		sidebar.classList.remove('active');
+		toggle.classList.remove('active');
+		overlay.classList.remove('active');
+		dropdownContent.classList.remove('active');
+	}
+}
+
+toggle.onclick = function(){
+    toggle.classList.toggle('active');
+    sidebar.classList.toggle('active');
+    overlay.classList.toggle('active');
+}
+
+dropbtn.onclick = function(){
+    dropdownContent.classList.toggle('active');
+	overlay.classList.toggle('active');
+}
+
+window.addEventListener('scroll', function (){
+	let nav = document.querySelector('.my-navbar');
+	
+	nav.classList.toggle('scrolled', window.scrollY > 70);
+})
+</script>
+
+<!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+</body>
+</html>
